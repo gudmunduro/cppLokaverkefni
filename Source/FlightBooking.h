@@ -1,8 +1,5 @@
 #include "includes.h"
 
-#ifndef SKILAVERKEFNI4_FLIGHTBOOKING_H
-#define SKILAVERKEFNI4_FLIGHTBOOKING_H
-
 
 class FlightBooking {
 public:
