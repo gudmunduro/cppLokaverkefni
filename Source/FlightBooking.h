@@ -10,6 +10,7 @@ public:
 	bool canceReservations(int number_ob_seats);
 	int getReserved();
 	int getCapacity();
+	int passangers;
 private:
 	bool isAllowedReservation(int reservation);
 	int capacity;

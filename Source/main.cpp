@@ -1,13 +1,13 @@
 #include <iostream>
 #include "FlightBooking.h"
 #include "Person.h"
+#include "List.h"
 
 using namespace std;
 
 int main()
 {
-	Person *person = new Person("1005612358", "Nafn", 160);
-	person->printInfo();
+    LinkedList<PersonNode> *persons = new LinkedList<PersonNode>();
 	while (true);
 	return 0;
 }
