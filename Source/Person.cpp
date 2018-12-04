@@ -11,3 +11,15 @@ void Person::printInfo()
 {
 	cout << name << endl << ssn << endl << age << endl;
 }
+
+string Person::getSsn() {
+	return ssn;
+}
+
+string Person::getName() {
+	return name;
+}
+
+int Person::getAge() {
+    return age;
+}

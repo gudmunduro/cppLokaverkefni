@@ -8,7 +8,7 @@ FlightBooking::FlightBooking(int id, int capacity, int reserved)
 	{
 		throw invalid_argument("Reserved value above capacity");
 	}
-	if (reserved < 0) reserved = 0; // Ef það er í mínus breytist það í núll
+	if (reserved < 0) reserved = 0; // Ef ï¿½aï¿½ er ï¿½ mï¿½nus breytist ï¿½aï¿½ ï¿½ nï¿½ll
 	this->reserved = reserved;
 }
 void FlightBooking::printStatus()
@@ -18,7 +18,7 @@ void FlightBooking::printStatus()
 }
 bool FlightBooking::reserveSeats(int number_ob_seats)
 {
-	if (isAllowedReservation(number_ob_seats + reserved) && number_ob_seats >= 0) // Ef niðurstaðan eftir breytingar er leyfileg og talan sem var sett inn er ekki í mínus
+	if (isAllowedReservation(number_ob_seats + reserved) && number_ob_seats >= 0) // Ef niï¿½urstaï¿½an eftir breytingar er leyfileg og talan sem var sett inn er ekki ï¿½ mï¿½nus
 	{
 		reserved += number_ob_seats;
 		return true;
@@ -27,7 +27,7 @@ bool FlightBooking::reserveSeats(int number_ob_seats)
 }
 bool FlightBooking::canceReservations(int number_ob_seats)
 {
-	if (reserved - number_ob_seats >= 0 && number_ob_seats >= 0) // Ef niðurstaðan eftir breytingu verður hærri en núll og talan sem var sett inn er ekki í mínus
+	if (reserved - number_ob_seats >= 0 && number_ob_seats >= 0) // Ef niï¿½urstaï¿½an eftir breytingu verï¿½ur hï¿½rri en nï¿½ll og talan sem var sett inn er ekki ï¿½ mï¿½nus
 	{
 		reserved -= number_ob_seats;
 		return true;
@@ -36,7 +36,7 @@ bool FlightBooking::canceReservations(int number_ob_seats)
 }
 bool FlightBooking::isAllowedReservation(int reservation)
 {
-	return ((float)reservation) / ((float)capacity) < 1.05; // Skilar true eða false eftir því hvort það sé yfir leyfilega magninu sem er 105%
+	return ((float)reservation) / ((float)capacity) < 1.05; // Skilar true eï¿½a false eftir ï¿½vï¿½ hvort ï¿½aï¿½ sï¿½ yfir leyfilega magninu sem er 105%
 }
 
 int FlightBooking::getReserved() {
@@ -45,4 +45,7 @@ int FlightBooking::getReserved() {
 
 int FlightBooking::getCapacity() {
 	return capacity;
+}
+int FlightBooking::getId() {
+    return id;
 }
