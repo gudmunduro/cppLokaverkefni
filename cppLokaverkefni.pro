@@ -29,20 +29,23 @@ SOURCES += \
         mainwindow.cpp \
     FlightBooking/FlightBooking.cpp \
     FlightBooking/List.cpp \
-    FlightBooking/Person.cpp \
-    main.cpp \
-    mainwindow.cpp
+    FlightBooking/Person.cpp \ #\
+    personinfo.cpp
+    # main.cpp \
+    # mainwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     FlightBooking/FlightBooking.h \
     FlightBooking/includes.h \
     FlightBooking/List.h \
-    FlightBooking/Person.h \
-    mainwindow.h
+    FlightBooking/Person.h \ #\
+    personinfo.h
+    #mainwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    personinfo.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

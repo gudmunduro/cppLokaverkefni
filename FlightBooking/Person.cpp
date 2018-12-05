@@ -7,9 +7,9 @@ Person::Person(string ssn, string name, int age)
 	this->age = age;
 }
 
-void Person::printInfo()
+string Person::getInfo()
 {
-	cout << name << endl << ssn << endl << age << endl;
+    return name + " " + ssn + "  " + to_string(age);
 }
 
 string Person::getSsn() {

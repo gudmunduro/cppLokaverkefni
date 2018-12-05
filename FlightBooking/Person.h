@@ -9,6 +9,6 @@ public:
 	Person(string ssn, string name, int age);
 	string getSsn();
 	string getName();
-	int getAge();
-	void printInfo();
+    int getAge();
+    string getInfo();
 };

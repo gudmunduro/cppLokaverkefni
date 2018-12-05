@@ -8,14 +8,14 @@ void PersonList::add(Person *person) {
     PersonNode *node = new PersonNode();
     node->person = person;
 
-    PersonNode *last = last();
+    PersonNode *last = this->last();
     if (last == nullptr) {
         if (first == nullptr) {
             first == node;
             count++;
             return;
         }
-        cout << "Failed to add user"
+        cout << "Failed to add user";
         return;
     }
     last->next = node;
@@ -37,7 +37,7 @@ PersonNode *PersonList::last() {
     return nullptr;
 }
 
-PersonNode* PersonList::get(int ssn) {
+PersonNode* PersonList::get(string ssn) {
     PersonNode *current = first;
     for (int i = 0; i < count; i++) {
         if (current->person->getSsn() == ssn) {
@@ -48,7 +48,7 @@ PersonNode* PersonList::get(int ssn) {
     return nullptr;
 }
 
-void PersonList::remove(int ssn) {
+void PersonList::remove(string ssn) {
     PersonNode *current = first;
     PersonNode *previous = nullptr;
     for (int i = 0; i < count; i++) {
@@ -71,14 +71,14 @@ void FlightList::add(FlightBooking *flight) {
     FlightNode *node = new FlightNode();
     node->flight = flight;
 
-    FlightNode *last = last();
+    FlightNode *last = this->last();
     if (last == nullptr) {
         if (first == nullptr) {
             first == node;
             count++;
             return;
         }
-        cout << "Failed to add flight"
+        cout << "Failed to add flight";
         return;
     }
     last->next = node;
@@ -122,4 +122,5 @@ void FlightList::remove(int id) {
         }
         previous = current;
         current = current->next;
+    }
 }

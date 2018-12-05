@@ -14,10 +14,10 @@ private:
 public:
     PersonList();
     void add(Person *person);
-    void remove(int ssn);
+    void remove(string ssn);
     int getCount();
     PersonNode *last();
-    PersonNode *get(int ssn);
+    PersonNode *get(string ssn);
 };
 
 struct FlightNode {
