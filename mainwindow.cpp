@@ -27,7 +27,6 @@ void MainWindow::addRow(int id, int reserved, int capacity)
 
 void MainWindow::prepareTable()
 {
-     flightList = new FlightList();
 
      flightList->add(new FlightBooking(10, 100, 500));
      flightList->add(new FlightBooking(15, 10, 50));

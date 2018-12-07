@@ -2,7 +2,7 @@
 #define FLIGHTBOOKING_H
 
 #include "includes.h"
-
+#include <QList>
 
 class FlightBooking {
 public:
@@ -14,14 +14,13 @@ public:
     int getCapacity();
 	int getId();
     void addPassanger(string ssn);
-    string *getPassangerSSNs();
+    QList<string> *getPassangerSSNs();
 private:
 	bool isAllowedReservation(int reservation);
 	int capacity;
 	int reserved;
     int id;
-    string *passangerSSNs;
-    int passangerCount;
+    QList<string> *passengerSSNs;
 };
 
 #endif

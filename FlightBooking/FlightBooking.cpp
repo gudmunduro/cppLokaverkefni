@@ -11,8 +11,7 @@ FlightBooking::FlightBooking(int id, int reserved, int capacity)
 	if (reserved < 0) reserved = 0; // Ef �a� er � m�nus breytist �a� � n�ll
 	this->reserved = reserved;
 
-    this->passangerSSNs = new string[capacity];
-    this->passangerCount = 0;
+    this->passengerSSNs = new QList<string>();
 }
 void FlightBooking::printStatus()
 {
@@ -21,8 +20,7 @@ void FlightBooking::printStatus()
 }
 void FlightBooking::addPassanger(string ssn)
 {
-    passangerSSNs[passangerCount] = ssn;
-    passangerCount++;
+    passengerSSNs->append(ssn);
 }
 /*bool FlightBooking::reserveSeats(int number_ob_seats)
 {
@@ -48,7 +46,7 @@ bool FlightBooking::isAllowedReservation(int reservation)
 }
 
 int FlightBooking::getReserved() {
-    return passangerCount;
+    return passengerSSNs->count();
 }
 int FlightBooking::getCapacity() {
 	return capacity;
@@ -56,6 +54,6 @@ int FlightBooking::getCapacity() {
 int FlightBooking::getId() {
     return id;
 }
-string *FlightBooking::getPassangerSSNs() {
-    return passangerSSNs;
+QList<string> *FlightBooking::getPassangerSSNs() {
+    return passengerSSNs;
 }

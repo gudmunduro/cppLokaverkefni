@@ -29,9 +29,10 @@ void FlightInfo::addRow(string ssn, string name, int age, int seat)
 
 void FlightInfo::reloadTable()
 {
+    ui->personTable->setRowCount(0);
     for (int i = 0; i < flight->getReserved(); i++)
     {
-        Person *person = personList->get(flight->getPassangerSSNs()[i])->person;
+        Person *person = personList->get(flight->getPassangerSSNs()->at(i))->person;
         this->addRow(person->getSsn(), person->getName(), person->getAge(), 0);
     }
 }

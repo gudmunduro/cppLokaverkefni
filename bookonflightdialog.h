@@ -16,7 +16,7 @@ class BookOnFlightDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit BookOnFlightDialog(QWidget *parent = nullptr);
+    explicit BookOnFlightDialog(QWidget *parent = nullptr, FlightBooking *flight = nullptr);
     ~BookOnFlightDialog();
 
     void prepareTable();
@@ -30,6 +30,8 @@ private slots:
 
 private:
     Ui::BookOnFlightDialog *ui;
+
+    FlightBooking *flight;
 };
 
 #endif // BOOKONFLIGHTDIALOG_H

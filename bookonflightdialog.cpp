@@ -1,11 +1,12 @@
 #include "bookonflightdialog.h"
 #include "ui_bookonflightdialog.h"
 
-BookOnFlightDialog::BookOnFlightDialog(QWidget *parent) :
+BookOnFlightDialog::BookOnFlightDialog(QWidget *parent, FlightBooking *flight) :
     QDialog(parent),
     ui(new Ui::BookOnFlightDialog)
 {
     ui->setupUi(this);
+    this->flight = flight;
     this->prepareTable();
 }
 
@@ -33,6 +34,7 @@ void BookOnFlightDialog::prepareTable()
 void BookOnFlightDialog::on_bookButton_clicked()
 {
     selectedPersonSSN = ui->personTable->item(ui->personTable->selectedItems().first()->row(), 0)->text().toStdString();
+    if (this->flight->getPassangerSSNs()->contains(selectedPersonSSN)) selectedPersonSSN = "";
     this->close();
 }
 
