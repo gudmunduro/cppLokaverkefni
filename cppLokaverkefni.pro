@@ -30,7 +30,10 @@ SOURCES += \
     FlightBooking/FlightBooking.cpp \
     FlightBooking/List.cpp \
     FlightBooking/Person.cpp \ #\
-    personinfo.cpp
+    personinfo.cpp \
+    flightinfo.cpp \
+    bookonflightdialog.cpp \
+    FlightBooking/globals.cpp
     # main.cpp \
     # mainwindow.cpp
 
@@ -40,12 +43,17 @@ HEADERS += \
     FlightBooking/includes.h \
     FlightBooking/List.h \
     FlightBooking/Person.h \ #\
-    personinfo.h
+    personinfo.h \
+    flightinfo.h \
+    bookonflightdialog.h \
+    FlightBooking/globals.h
     #mainwindow.h
 
 FORMS += \
         mainwindow.ui \
-    personinfo.ui
+    personinfo.ui \
+    flightinfo.ui \
+    bookonflightdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

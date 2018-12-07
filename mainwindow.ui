@@ -14,18 +14,18 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="flightsTable">
     <property name="geometry">
      <rect>
       <x>60</x>
       <y>20</y>
-      <width>471</width>
+      <width>491</width>
       <height>192</height>
      </rect>
     </property>
     <column>
      <property name="text">
-      <string>New Column</string>
+      <string>ID</string>
      </property>
     </column>
     <column>
@@ -39,7 +39,7 @@
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="addFlightButton">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -49,32 +49,27 @@
      </rect>
     </property>
     <property name="text">
-     <string>Add Passanger</string>
+     <string>Add Flight</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="removePersonButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>50</y>
+      <x>580</x>
+      <y>20</y>
       <width>126</width>
       <height>35</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: red;
+}</string>
     </property>
     <property name="text">
      <string>Remove</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>725</width>
-     <height>29</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -85,6 +80,22 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>725</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFlight_booking">
+    <property name="title">
+     <string>Flights</string>
+    </property>
+   </widget>
+   <addaction name="menuFlight_booking"/>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

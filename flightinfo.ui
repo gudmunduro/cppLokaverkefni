@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FlightInfo</class>
+ <widget class="QDialog" name="FlightInfo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>951</width>
+    <height>426</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTableWidget" name="personTable">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>661</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>SSN</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Age</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Seat</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="bookFlight">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>340</y>
+     <width>171</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Book on flight</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="editPersonButton">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>40</y>
+     <width>201</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edit person info</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="unbookButton">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>100</y>
+     <width>201</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: red;
+}</string>
+   </property>
+   <property name="text">
+    <string>Unbook</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

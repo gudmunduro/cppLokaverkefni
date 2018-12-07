@@ -1,3 +1,6 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include "includes.h"
 
 class Person {
@@ -12,3 +15,5 @@ public:
     int getAge();
     string getInfo();
 };
+
+#endif

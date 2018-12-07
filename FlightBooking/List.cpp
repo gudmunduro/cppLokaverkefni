@@ -1,17 +1,21 @@
 #include "List.h"
 
-PersonList::PersonList() {
 
+
+PersonList::PersonList() {
+    first = nullptr;
 }
 
 void PersonList::add(Person *person) {
+    if (exists(person->getSsn())) return;
+
     PersonNode *node = new PersonNode();
     node->person = person;
 
     PersonNode *last = this->last();
     if (last == nullptr) {
         if (first == nullptr) {
-            first == node;
+            first = node;
             count++;
             return;
         }
@@ -48,6 +52,19 @@ PersonNode* PersonList::get(string ssn) {
     return nullptr;
 }
 
+bool PersonList::exists(string ssn) {
+    return get(ssn) != nullptr;
+}
+
+void PersonList::loop(function< void(Person *person) > forEach)
+{
+    PersonNode *current = first;
+    while (current != nullptr) {
+        forEach(current->person);
+        current = current->next;
+    }
+}
+
 void PersonList::remove(string ssn) {
     PersonNode *current = first;
     PersonNode *previous = nullptr;
@@ -61,24 +78,33 @@ void PersonList::remove(string ssn) {
     }
 }
 
-// Flight
+
+
+
+//---------------------------------\\
+//---------FlightList--------------\\
+//---------------------------------\\
+
+
 
 FlightList::FlightList() {
-
+    first = nullptr;
 }
 
 void FlightList::add(FlightBooking *flight) {
+    if (exists(flight->getId())) return;
+
     FlightNode *node = new FlightNode();
     node->flight = flight;
 
     FlightNode *last = this->last();
     if (last == nullptr) {
         if (first == nullptr) {
-            first == node;
+            first = node;
             count++;
             return;
         }
-        cout << "Failed to add flight";
+        cout << "Failed to add flight" << endl;
         return;
     }
     last->next = node;
@@ -110,6 +136,19 @@ FlightNode *FlightList::get(int id) {
         current = current->next;
     }
     return nullptr;
+}
+
+bool FlightList::exists(int id) {
+    return get(id) != nullptr;
+}
+
+void FlightList::loop(function< void(FlightBooking *flight) > forEach)
+{
+    FlightNode *current = first;
+    while (current != nullptr) {
+        forEach(current->flight);
+        current = current->next;
+    }
 }
 
 void FlightList::remove(int id) {
