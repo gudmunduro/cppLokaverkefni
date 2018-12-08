@@ -4,6 +4,7 @@
 
 PersonList::PersonList() {
     first = nullptr;
+    count = 0;
 }
 
 void PersonList::add(Person *person) {
@@ -56,8 +57,7 @@ bool PersonList::exists(string ssn) {
     return get(ssn) != nullptr;
 }
 
-void PersonList::loop(function< void(Person *person) > forEach)
-{
+void PersonList::loop(function< void(Person *person) > forEach) {
     PersonNode *current = first;
     while (current != nullptr) {
         forEach(current->person);
@@ -66,6 +66,7 @@ void PersonList::loop(function< void(Person *person) > forEach)
 }
 
 void PersonList::remove(string ssn) {
+    if (!exists(ssn)) return;
     PersonNode *current = first;
     PersonNode *previous = nullptr;
     for (int i = 0; i < count; i++) {
@@ -89,6 +90,7 @@ void PersonList::remove(string ssn) {
 
 FlightList::FlightList() {
     first = nullptr;
+    count = 0;
 }
 
 void FlightList::add(FlightBooking *flight) {
@@ -142,8 +144,7 @@ bool FlightList::exists(int id) {
     return get(id) != nullptr;
 }
 
-void FlightList::loop(function< void(FlightBooking *flight) > forEach)
-{
+void FlightList::loop(function< void(FlightBooking *flight) > forEach) {
     FlightNode *current = first;
     while (current != nullptr) {
         forEach(current->flight);
@@ -152,11 +153,16 @@ void FlightList::loop(function< void(FlightBooking *flight) > forEach)
 }
 
 void FlightList::remove(int id) {
+    if (!exists(id)) return;
     FlightNode *current = first;
     FlightNode *previous = nullptr;
     for (int i = 0; i < count; i++) {
         if (current->flight->getId() == id) {
-            previous->next = current->next;
+            if (previous == nullptr) {
+                first = current->next;
+                return;
+            }
+            previous->next = (current == nullptr) ? nullptr : current->next;
             return;
         }
         previous = current;

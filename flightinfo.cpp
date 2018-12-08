@@ -32,16 +32,22 @@ void FlightInfo::reloadTable()
     ui->personTable->setRowCount(0);
     for (int i = 0; i < flight->getReserved(); i++)
     {
-        Person *person = personList->get(flight->getPassangerSSNs()->at(i))->person;
+        Person *person = personList->get(flight->getPassangerSSNs().at(i))->person;
         this->addRow(person->getSsn(), person->getName(), person->getAge(), 0);
     }
 }
 
 void FlightInfo::on_bookFlight_clicked()
 {
-    BookOnFlightDialog *dialog = new BookOnFlightDialog();
+    BookOnFlightDialog *dialog = new BookOnFlightDialog(nullptr, flight);
     dialog->exec();
     if (dialog->selectedPersonSSN != "") flight->addPassanger(dialog->selectedPersonSSN);
     this->reloadTable();
 
+}
+
+void FlightInfo::on_unbookButton_clicked()
+{
+    string ssn = ui->personTable->item(ui->personTable->selectedItems().first()->row(), 0)->text().toStdString();
+    flight->getPassangerSSNs().removeAt(flight->getPassangerSSNs().indexOf(ssn));
 }

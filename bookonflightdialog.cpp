@@ -8,6 +8,7 @@ BookOnFlightDialog::BookOnFlightDialog(QWidget *parent, FlightBooking *flight) :
     ui->setupUi(this);
     this->flight = flight;
     this->prepareTable();
+    this->setWindowTitle("Persons");
 }
 
 BookOnFlightDialog::~BookOnFlightDialog()
@@ -33,8 +34,9 @@ void BookOnFlightDialog::prepareTable()
 
 void BookOnFlightDialog::on_bookButton_clicked()
 {
+    if (ui->personTable->selectedItems().count() == 0) return;
     selectedPersonSSN = ui->personTable->item(ui->personTable->selectedItems().first()->row(), 0)->text().toStdString();
-    if (this->flight->getPassangerSSNs()->contains(selectedPersonSSN)) selectedPersonSSN = "";
+    if (this->flight->getPassangerSSNs().contains(selectedPersonSSN)) selectedPersonSSN = "";
     this->close();
 }
 

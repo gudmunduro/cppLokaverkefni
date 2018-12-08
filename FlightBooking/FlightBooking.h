@@ -14,13 +14,13 @@ public:
     int getCapacity();
 	int getId();
     void addPassanger(string ssn);
-    QList<string> *getPassangerSSNs();
+    QList<string> getPassangerSSNs();
 private:
 	bool isAllowedReservation(int reservation);
 	int capacity;
 	int reserved;
     int id;
-    QList<string> *passengerSSNs;
+    QList<string> passengerSSNs;
 };
 
 #endif

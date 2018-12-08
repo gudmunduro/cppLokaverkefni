@@ -4,6 +4,7 @@
 #include "FlightBooking/List.h"
 #include "FlightBooking/FlightBooking.h"
 #include "flightinfo.h"
+#include "addflightdialog.h"
 #include <QMainWindow>
 #include "FlightBooking/globals.h"
 
@@ -19,7 +20,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void prepareTable();
+    void reloadTable();
     ~MainWindow();
 
     void addRow(int id, int reserved, int capacity);
@@ -27,6 +28,10 @@ public:
 private slots:
 
     void on_flightsTable_cellDoubleClicked(int row, int column);
+
+    void on_removeFlightButton_clicked();
+
+    void on_addFlightButton_clicked();
 
 private:
     Ui::MainWindow *ui;

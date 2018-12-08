@@ -56,24 +56,11 @@
     <string>Book on flight</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="editPersonButton">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>40</y>
-     <width>201</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Edit person info</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="unbookButton">
    <property name="geometry">
     <rect>
      <x>730</x>
-     <y>100</y>
+     <y>50</y>
      <width>201</width>
      <height>35</height>
     </rect>

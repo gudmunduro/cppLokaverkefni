@@ -52,7 +52,7 @@
      <string>Add Flight</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="removePersonButton">
+   <widget class="QPushButton" name="removeFlightButton">
     <property name="geometry">
      <rect>
       <x>580</x>

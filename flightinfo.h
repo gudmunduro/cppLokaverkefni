@@ -21,6 +21,8 @@ public:
 private slots:
     void on_bookFlight_clicked();
 
+    void on_unbookButton_clicked();
+
 private:
     Ui::FlightInfo *ui;
     FlightBooking *flight;
