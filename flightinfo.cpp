@@ -42,12 +42,13 @@ void FlightInfo::on_bookFlight_clicked()
     BookOnFlightDialog *dialog = new BookOnFlightDialog(nullptr, flight);
     dialog->exec();
     if (dialog->selectedPersonSSN != "") flight->addPassanger(dialog->selectedPersonSSN);
-    this->reloadTable();
+    reloadTable();
 
 }
 
 void FlightInfo::on_unbookButton_clicked()
 {
     string ssn = ui->personTable->item(ui->personTable->selectedItems().first()->row(), 0)->text().toStdString();
-    flight->getPassangerSSNs().removeAt(flight->getPassangerSSNs().indexOf(ssn));
+    flight->removePassanger(ssn);
+    reloadTable();
 }

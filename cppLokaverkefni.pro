@@ -50,6 +50,8 @@ HEADERS += \
     FlightBooking/globals.h \
     addflightdialog.h
     #mainwindow.h
+    json.hpp
+
 
 FORMS += \
         mainwindow.ui \

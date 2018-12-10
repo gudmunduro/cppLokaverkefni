@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,8 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     flightList = new FlightList();
 
-    flightList->add(new FlightBooking(10, 100, 500));
-    flightList->add(new FlightBooking(15, 10, 50));
+    flightList->load();
 
     personList->add(new Person("1000000", "Nafn 1", 25));
     personList->add(new Person("1001000", "Nafn 2", 26));
@@ -24,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    flightList->save();
     delete ui;
 }
 
@@ -57,7 +56,6 @@ void MainWindow::on_removeFlightButton_clicked()
     if (ui->flightsTable->selectedItems().count() == 0) return;
 
     int flightID = ui->flightsTable->item(ui->flightsTable->selectedItems().first()->row(), 0)->text().toInt();
-
     flightList->remove(flightID);
 
     reloadTable();
@@ -68,7 +66,8 @@ void MainWindow::on_addFlightButton_clicked()
     AddFlightDialog *dialog = new AddFlightDialog();
     dialog->exec();
     if (dialog->shouldAdd && !flightList->exists(dialog->selectedID)) {
-        flightList->add(new FlightBooking(dialog->selectedID, 0, dialog->selectedCapacity));
+        FlightBooking *flight = new FlightBooking(dialog->selectedID, 0, dialog->selectedCapacity);
+        flightList->add(flight);
         reloadTable();
     }
 }

@@ -6,7 +6,7 @@
 
 class FlightBooking {
 public:
-    FlightBooking(int id, int reserved, int capacity);
+    FlightBooking(int id, int reserved, int capacity, QList<string> passengers = QList<string>());
 	void printStatus();
     // bool reserveSeats(int number_ob_seats);
     // bool canceReservations(int number_ob_seats);
@@ -14,6 +14,7 @@ public:
     int getCapacity();
 	int getId();
     void addPassanger(string ssn);
+    void removePassanger(string ssn);
     QList<string> getPassangerSSNs();
 private:
 	bool isAllowedReservation(int reservation);

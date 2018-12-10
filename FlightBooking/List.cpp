@@ -71,7 +71,13 @@ void PersonList::remove(string ssn) {
     PersonNode *previous = nullptr;
     for (int i = 0; i < count; i++) {
         if (current->person->getSsn() == ssn) {
+            if (previous == nullptr) {
+                first = current->next;
+                count--;
+                return;
+            }
             previous->next = current->next;
+            count--;
             return;
         }
         previous = current;
@@ -160,12 +166,65 @@ void FlightList::remove(int id) {
         if (current->flight->getId() == id) {
             if (previous == nullptr) {
                 first = current->next;
+                count--;
                 return;
             }
             previous->next = (current == nullptr) ? nullptr : current->next;
+            count--;
             return;
         }
         previous = current;
         current = current->next;
+    }
+}
+
+void FlightList::save()
+{
+    ifstream file("data.json");
+    json data;
+    if (file.peek() == std::ifstream::traits_type::eof()) data = json::object();
+    else file >> data;
+    data["flights"] = json::array();
+
+    FlightNode* current = first;
+    while (current != nullptr)
+    {
+        json passengerArray = json::array();
+        for (string passenger : current->flight->getPassangerSSNs())
+        {
+            passengerArray.push_back(passenger);
+        }
+        json currentFlight = {
+            {"id", current->flight->getId()},
+            {"reserved", current->flight->getReserved()},
+            {"capacity", current->flight->getCapacity()},
+            {"passengers", passengerArray}};
+
+        data["flights"].push_back(currentFlight);
+
+        current = current->next;
+    }
+
+    ofstream fileOut("data.json");
+    fileOut << data;
+}
+
+void FlightList::load()
+{
+    ifstream file("data.json");
+    if (file.peek() == std::ifstream::traits_type::eof()) return;
+    json data;
+    file >> data;
+    if (data.empty() || data.is_null()) return;
+    if (!data["flights"].is_array()) return;
+    for (auto& el : data["flights"]) {
+        int id = el["id"];
+        int reserved = el["reserved"];
+        int capacity = el["capacity"];
+        QList<string> passengers = QList<string>();
+        for (auto& passenger : el["passengers"]) {
+            passengers.push_back(passenger);
+        }
+        add(new FlightBooking(id, reserved, capacity, passengers));
     }
 }

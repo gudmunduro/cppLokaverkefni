@@ -1,6 +1,6 @@
 #include "FlightBooking.h"
 
-FlightBooking::FlightBooking(int id, int reserved, int capacity)
+FlightBooking::FlightBooking(int id, int reserved, int capacity, QList<string> passengers)
 {
 	this->id = id;
 	this->capacity = capacity;
@@ -11,7 +11,7 @@ FlightBooking::FlightBooking(int id, int reserved, int capacity)
 	if (reserved < 0) reserved = 0; // Ef �a� er � m�nus breytist �a� � n�ll
 	this->reserved = reserved;
 
-    this->passengerSSNs = QList<string>();
+    this->passengerSSNs = passengers;
 
 }
 void FlightBooking::printStatus()
@@ -22,6 +22,10 @@ void FlightBooking::printStatus()
 void FlightBooking::addPassanger(string ssn)
 {
     passengerSSNs.append(ssn);
+}
+void FlightBooking::removePassanger(string ssn)
+{
+    passengerSSNs.removeAt(passengerSSNs.indexOf(ssn));
 }
 /*bool FlightBooking::reserveSeats(int number_ob_seats)
 {

@@ -5,6 +5,11 @@
 #include "Person.h"
 #include "FlightBooking.h"
 #include <functional>
+#include <fstream>
+#include <QList>
+#include "json.hpp"
+
+using namespace nlohmann;
 
 struct PersonNode {
     Person *person;
@@ -51,6 +56,8 @@ public:
     FlightNode *last();
     FlightNode *get(int id);
     bool exists(int id);
+    void save();
+    void load();
 };
 
 #endif
